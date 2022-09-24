@@ -1,4 +1,4 @@
-import { loginController } from "../controllers/users.controller";
+import loginController from "../controllers/session.controller";
 import { Router } from "express";
 
 const loginRoutes = Router()

@@ -1,7 +1,5 @@
-import { response } from "express"
 import createUserService from "../services/users/createuser.services"
 import listUserService from "../services/users/listuser.services"
-import userLoginService from "../services/users/loginUser.services"
 import listUserProfileService from "../services/users/listUserProfile.services"
 import deleteUserService from "../services/users/deleteUser.services"
 import updateProfileServices from "../services/users/updateUserServices"
@@ -20,16 +18,6 @@ const listUserController = (req, res) =>{
         return res.status(401).json({message: error.message })
     }
 }
-
-const loginController = async (request, response) => {
-    const { email, password } = request.body;
-
-    const userLogin = await userLoginService(email, password);
-    if(userLogin !== undefined){
-        return response.status(200).json({token: userLogin})
-    }
-    return response.status(401).json({message: "Wrong email/password"})
-  };
 
 const listUserProfile =  (req, res) => {
     const id = req.user.id
@@ -56,4 +44,4 @@ const updateProfileController = (req, res) => {
     return res.json(updatedUser)
 }
 
-export {createUser, listUserController, loginController,listUserProfile, deleteUserController, updateProfileController}
+export {createUser, listUserController,listUserProfile, deleteUserController, updateProfileController}
