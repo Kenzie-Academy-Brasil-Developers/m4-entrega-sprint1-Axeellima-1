@@ -50,8 +50,8 @@ const deleteUserController = (req, res) => {
       
 const updateProfileController = (req, res) => {
     const uuid = req.user.id
-    const { email, name, createdOn } = req.body
-    const updatedUser = updateProfileServices(uuid, name, email, createdOn)
+    const { email, name } = req.body
+    const updatedUser = updateProfileServices(uuid, name, email)
 
     return res.json(updatedUser)
 }

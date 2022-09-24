@@ -1,9 +1,8 @@
 import moment from "moment";
 import users from "../../database";
 
-const updateProfileServices = (uuid, name, email, createdOn) =>{
+const updateProfileServices = (uuid, name, email) =>{
 
-    console.log(createdOn)
 const updatedUser = {
     uuid,
     name,
