@@ -1,14 +1,24 @@
 import moment from "moment";
 import users from "../../database";
+import { hash } from "bcryptjs";
 
-const updateProfileServices = (uuid, name, email) =>{
+const updateProfileServices = async (uuid, name, email, password) =>{
 
-const updatedUser = {
-    uuid,
-    name,
-    email,
-    updatedOn: moment()
-}
+    const updatedUser = {
+        uuid,
+        name,
+        email,
+        updatedOn: moment()
+    }
+
+
+    if(password !== undefined) {
+        const hashedPassword = await hash(password, 10)
+
+        password = hashedPassword
+
+        updatedUser.password = password
+    }
 
 const userIndex = users.findIndex( user => user.uuid === uuid)
 
